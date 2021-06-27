@@ -1,6 +1,6 @@
 {
   "name": "creco-cli",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "creco-cli",
   "main": "index.js",
   "scripts": {
