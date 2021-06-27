@@ -1,0 +1,30 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish-npm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+      - run: yarn
+      - name: npm whoami
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
+        run: |
+          npm whoami
+      - name: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
+        run: |
+          npm publish
+      - name: slack sending
+        env:
+          SLACK_WEBHOOK_URL: ${{secrets.SLACK_WEBHOOK_URL}}
+        run: |
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"[creco-cli] publish!"}' $SLACK_WEBHOOK_URL
