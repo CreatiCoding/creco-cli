@@ -2,15 +2,12 @@
   "name": "creco-cli",
   "version": "1.0.3",
   "description": "creco-cli",
-  "main": "index.js",
+  "main": "./index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "npm:update": "./scripts/update.sh",
-    "creco-cli": "creco-cli",
-    "prepare": "husky install"
-  },
-  "bin": {
-    "creco-cli": "./index.js"
+    "prepare": "husky install",
+    "creco-cli": "node ./index.js"
   },
   "repository": {
     "type": "git",
