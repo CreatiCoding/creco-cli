@@ -11,6 +11,7 @@
   },
   "bin": {
     "creco-cli": "./index.js"
+    
   },
   "repository": {
     "type": "git",
